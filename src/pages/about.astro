@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Me">
+	<section class="about-header">
+		<h1>About Me</h1>
+		<p class="subtitle">Get to know me better</p>
+	</section>
+
+	<section class="about-content">
+		<div class="about-grid">
+			<div class="photo-section">
+				<div class="photo-container">
+					<div class="photo-placeholder">
+						<!-- Replace this with your photo -->
+						<p>Your Photo Here</p>
+					</div>
+				</div>
+				<div class="quick-info">
+					<h3>Quick Info</h3>
+					<ul>
+						<li><strong>Location:</strong> Your City, Country</li>
+						<li><strong>Email:</strong> your.email@example.com</li>
+						<li><strong>Languages:</strong> English, [Other Languages]</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="bio-section">
+				<h2>My Story</h2>
+				<p>
+					Welcome to my portfolio! I'm a passionate photographer and illustrator with a keen eye for detail
+					and a love for creative expression. My journey in the visual arts began [Your Story Here].
+				</p>
+				<p>
+					I specialize in [Your Specialties] and love to [What You Love Doing]. My work is inspired by
+					[Your Inspirations] and I strive to [Your Goals].
+				</p>
+
+				<h2>Skills & Expertise</h2>
+				<div class="skills-grid">
+					<div class="skill-category">
+						<h3>Photography</h3>
+						<ul>
+							<li>Portrait Photography</li>
+							<li>Landscape Photography</li>
+							<li>Street Photography</li>
+							<li>Photo Editing</li>
+						</ul>
+					</div>
+					<div class="skill-category">
+						<h3>Illustration</h3>
+						<ul>
+							<li>Digital Art</li>
+							<li>Character Design</li>
+							<li>Traditional Drawing</li>
+							<li>Concept Art</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.about-header {
+		text-align: center;
+		padding: 4rem 2rem;
+		background-color: var(--secondary-background);
+		margin: -2rem -2rem 2rem -2rem;
+	}
+
+	h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		color: var(--text-color);
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		color: #4b5563;
+	}
+
+	.about-content {
+		padding: 2rem 0;
+	}
+
+	.about-grid {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		gap: 3rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.photo-section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.photo-container {
+		background: white;
+		overflow: hidden;
+	}
+
+	.photo-placeholder {
+		height: 400px;
+		background-color: #e5e7eb;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #6b7280;
+		font-size: 1.25rem;
+	}
+
+	.quick-info {
+		background: white;
+		padding: 1.5rem;
+	}
+
+	.quick-info h3 {
+		margin-bottom: 1rem;
+		color: var(--text-color);
+	}
+
+	.quick-info ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.quick-info li {
+		margin-bottom: 0.75rem;
+		color: #4b5563;
+	}
+
+	.bio-section {
+		background: white;
+		padding: 2rem;
+	}
+
+	.bio-section h2 {
+		color: var(--text-color);
+		margin-bottom: 1.5rem;
+		font-size: 1.75rem;
+	}
+
+	.bio-section p {
+		color: #4b5563;
+		line-height: 1.7;
+		margin-bottom: 1.5rem;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	.skill-category h3 {
+		color: var(--text-color);
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+	}
+
+	.skill-category ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.skill-category li {
+		color: #4b5563;
+		margin-bottom: 0.5rem;
+		padding-left: 1.5rem;
+		position: relative;
+	}
+
+	.skill-category li::before {
+		content: "•";
+		color: var(--primary-color);
+		position: absolute;
+		left: 0;
+	}
+
+	@media (max-width: 768px) {
+		.about-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.photo-placeholder {
+			height: 300px;
+		}
+
+		.about-header {
+			padding: 3rem 1rem;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+		}
+
+		.bio-section {
+			padding: 1.5rem;
+		}
+	}
+</style> 

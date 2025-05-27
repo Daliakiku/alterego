@@ -16,44 +16,45 @@ const { title = "My Portfolio" } = Astro.props;
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Glacial+Indifference&family=Ibarra+Real+Nova:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<header>
-			<nav>
-				<div class="logo">Portfolio</div>
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/projects">Projects</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/contact">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
+		<div id="main-content" class="main-content">
+			<header class="animate-header">
+				<nav>
+					<div class="logo animate-logo">Portfolio</div>
+					<ul class="animate-nav">
+						<li><a href="/">Home</a></li>
+						<li><a href="/photography">Photography</a></li>
+						<li><a href="/illustrations">Illustrations</a></li>
+						<li><a href="/about">About</a></li>
+					</ul>
+				</nav>
+			</header>
 
-		<main>
-			<slot />
-		</main>
+			<main class="animate-main">
+				<slot />
+			</main>
 
-		<footer>
-			<div class="footer-content">
-				<p>&copy; {new Date().getFullYear()} My Portfolio. All rights reserved.</p>
-				<div class="social-links">
-					<a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-					<a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-					<a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+			<footer class="animate-footer">
+				<div class="footer-content">
+					<div class="social-links">
+						<a href="https://github.com/Daliakiku" target="_blank" rel="noopener">GitHub</a>
+						<a href="https://instagram.com/uh_uhm_" target="_blank" rel="noopener">Instagram</a>
+					</div>
 				</div>
-			</div>
-		</footer>
+			</footer>
+		</div>
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		--primary-color: #2563eb;
-		--text-color: #1f2937;
+		--primary-color: #292528;
+		--text-color: #292528;
 		--background-color: #ffffff;
-		--secondary-background: #f3f4f6;
+		--secondary-background: #ffffff;
+		--grunge-border: #e5e7eb;
 	}
 
 	* {
@@ -63,7 +64,7 @@ const { title = "My Portfolio" } = Astro.props;
 	}
 
 	html {
-		font-family: 'Inter', system-ui, sans-serif;
+		font-family: 'Glacial Indifference', sans-serif;
 		color: var(--text-color);
 		background-color: var(--background-color);
 	}
@@ -74,9 +75,55 @@ const { title = "My Portfolio" } = Astro.props;
 		flex-direction: column;
 	}
 
+	main {
+		position: relative;
+		background-color: var(--background-color);
+		padding: 2rem;
+	}
+
+	main::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(45deg, transparent 45%, rgba(0, 0, 0, 0.02) 50%, transparent 55%);
+		pointer-events: none;
+	}
+
+	section {
+		position: relative;
+		margin: 2rem 0;
+		padding: 2rem;
+		background: var(--background-color);
+	}
+
+	section::before {
+		display: none;
+	}
+
+	.button {
+		position: relative;
+		background: transparent;
+		border: none;
+		color: var(--primary-color);
+		padding: 0.75rem 1.5rem;
+		font-family: 'Glacial Indifference', sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+
+	.button:hover {
+		background: var(--primary-color);
+		color: var(--background-color);
+		transform: translateY(-2px);
+	}
+
 	header {
 		background-color: var(--background-color);
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 		position: sticky;
 		top: 0;
 		z-index: 100;
@@ -91,16 +138,16 @@ const { title = "My Portfolio" } = Astro.props;
 		align-items: center;
 	}
 
-	.logo {
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--primary-color);
-	}
-
 	nav ul {
 		display: flex;
 		gap: 2rem;
 		list-style: none;
+	}
+
+	.logo {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: var(--primary-color);
 	}
 
 	nav a {
@@ -114,16 +161,8 @@ const { title = "My Portfolio" } = Astro.props;
 		color: var(--primary-color);
 	}
 
-	main {
-		flex: 1;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem;
-		width: 100%;
-	}
-
 	footer {
-		background-color: var(--secondary-background);
+		background-color: var(--background-color);
 		padding: 2rem;
 		margin-top: auto;
 	}
@@ -149,6 +188,53 @@ const { title = "My Portfolio" } = Astro.props;
 
 	.social-links a:hover {
 		color: var(--primary-color);
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Ibarra Real Nova', serif;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		position: relative;
+		display: inline-block;
+	}
+
+	h2::after, h3::after {
+		display: none;
+	}
+
+	/* Grunge image effects */
+	img {
+		filter: contrast(110%);
+		transition: all 0.3s ease;
+	}
+
+	img:hover {
+		transform: scale(1.02);
+	}
+
+	/* Grunge list styles */
+	ul, ol {
+		list-style: none;
+		padding-left: 1.5rem;
+	}
+
+	ul li::before, ol li::before {
+		content: '>';
+		color: var(--primary-color);
+		margin-right: 0.5rem;
+		font-family: 'Roboto Mono', monospace;
+	}
+
+	/* Grunge link styles */
+	a {
+		color: var(--primary-color);
+		text-decoration: none;
+		position: relative;
+		transition: all 0.3s ease;
+	}
+
+	a::after {
+		display: none;
 	}
 
 	@media (max-width: 768px) {

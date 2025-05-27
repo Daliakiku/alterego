@@ -7,6 +7,11 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Welcome to My Portfolio">
 	<section class="hero">
+		<div class="slideshow">
+			<div class="slide"></div>
+			<div class="slide"></div>
+			<div class="slide"></div>
+		</div>
 		<div class="hero-content">
 			<h1>Hi, I'm <span class="highlight">Your Name</span></h1>
 			<p class="subtitle">Web Developer & Designer</p>
@@ -14,32 +19,7 @@ import Layout from '../layouts/Layout.astro';
 				I create beautiful, functional websites and applications with modern technologies.
 			</p>
 			<div class="cta-buttons">
-				<a href="/projects" class="button primary">View My Work</a>
-				<a href="/contact" class="button secondary">Contact Me</a>
-			</div>
-		</div>
-	</section>
-
-	<section class="featured-projects">
-		<h2>Featured Projects</h2>
-		<div class="project-grid">
-			<div class="project-card">
-				<div class="project-image"></div>
-				<h3>Project One</h3>
-				<p>A brief description of your first project goes here.</p>
-				<a href="/projects/1" class="project-link">Learn More →</a>
-			</div>
-			<div class="project-card">
-				<div class="project-image"></div>
-				<h3>Project Two</h3>
-				<p>A brief description of your second project goes here.</p>
-				<a href="/projects/2" class="project-link">Learn More →</a>
-			</div>
-			<div class="project-card">
-				<div class="project-image"></div>
-				<h3>Project Three</h3>
-				<p>A brief description of your third project goes here.</p>
-				<a href="/projects/3" class="project-link">Learn More →</a>
+				<a href="/about" class="button secondary">Contact Me</a>
 			</div>
 		</div>
 	</section>
@@ -47,16 +27,58 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
 	.hero {
-		min-height: 80vh;
+		min-height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 		padding: 2rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.slideshow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+	}
+
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		transition: opacity 1s ease-in-out;
+	}
+
+	.slide:nth-child(1) {
+		background-image: url('/images/slide1.jpg');
+		opacity: 1;
+	}
+
+	.slide:nth-child(2) {
+		background-image: url('/images/slide2.jpg');
+	}
+
+	.slide:nth-child(3) {
+		background-image: url('/images/slide3.jpg');
 	}
 
 	.hero-content {
 		max-width: 800px;
+		position: relative;
+		z-index: 1;
+		background-color: rgba(255, 255, 255, 0.9);
+		padding: 2rem;
+		border-radius: 0.5rem;
 	}
 
 	h1 {
@@ -113,65 +135,6 @@ import Layout from '../layouts/Layout.astro';
 		background-color: #e5e7eb;
 	}
 
-	.featured-projects {
-		padding: 4rem 2rem;
-		background-color: var(--secondary-background);
-	}
-
-	.featured-projects h2 {
-		text-align: center;
-		margin-bottom: 3rem;
-		font-size: 2.5rem;
-	}
-
-	.project-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	.project-card {
-		background: white;
-		border-radius: 1rem;
-		overflow: hidden;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-		transition: transform 0.2s;
-	}
-
-	.project-card:hover {
-		transform: translateY(-5px);
-	}
-
-	.project-image {
-		height: 200px;
-		background-color: #e5e7eb;
-	}
-
-	.project-card h3 {
-		padding: 1.5rem 1.5rem 0.5rem;
-		font-size: 1.25rem;
-	}
-
-	.project-card p {
-		padding: 0 1.5rem 1rem;
-		color: #4b5563;
-	}
-
-	.project-link {
-		display: block;
-		padding: 1rem 1.5rem;
-		color: var(--primary-color);
-		text-decoration: none;
-		font-weight: 500;
-		border-top: 1px solid #e5e7eb;
-	}
-
-	.project-link:hover {
-		background-color: var(--secondary-background);
-	}
-
 	@media (max-width: 768px) {
 		h1 {
 			font-size: 2.5rem;
@@ -191,3 +154,18 @@ import Layout from '../layouts/Layout.astro';
 		}
 	}
 </style>
+
+<script>
+	let currentSlide = 0;
+	const slides = document.querySelectorAll('.slide') as NodeListOf<HTMLElement>;
+	const totalSlides = slides.length;
+
+	function nextSlide() {
+		slides[currentSlide].style.opacity = '0';
+		currentSlide = (currentSlide + 1) % totalSlides;
+		slides[currentSlide].style.opacity = '1';
+	}
+
+	// Change slide every 5 seconds
+	setInterval(nextSlide, 5000);
+</script>
