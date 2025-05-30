@@ -23,7 +23,7 @@ const { title = "My Portfolio" } = Astro.props;
 			<header class="animate-header">
 				<nav>
 					<div class="logo animate-logo">Portfolio</div>
-					<ul class="animate-nav">
+					<ul class="animate-nav nav-links">
 						<li><a href="/">Home</a></li>
 						<li><a href="/photography">Photography</a></li>
 						<li><a href="/illustrations">Illustrations</a></li>
@@ -41,6 +41,7 @@ const { title = "My Portfolio" } = Astro.props;
 					<div class="social-links">
 						<a href="https://github.com/Daliakiku" target="_blank" rel="noopener">GitHub</a>
 						<a href="https://instagram.com/uh_uhm_" target="_blank" rel="noopener">Instagram</a>
+						<a href="mailto:dalia.thornburgh@gmail.com">Email</a>
 					</div>
 				</div>
 			</footer>
@@ -171,23 +172,42 @@ const { title = "My Portfolio" } = Astro.props;
 		max-width: 1200px;
 		margin: 0 auto;
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 	}
 
 	.social-links {
 		display: flex;
-		gap: 1rem;
+		gap: 2rem;
+		justify-content: center;
 	}
 
 	.social-links a {
 		color: var(--text-color);
 		text-decoration: none;
-		transition: color 0.2s;
+		transition: all 0.3s ease;
+		position: relative;
+		padding: 0.5rem 0;
+	}
+
+	.social-links a::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: var(--primary-color);
+		transition: width 0.3s ease;
 	}
 
 	.social-links a:hover {
 		color: var(--primary-color);
+		transform: translateY(-2px);
+	}
+
+	.social-links a:hover::after {
+		width: 100%;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -243,6 +263,17 @@ const { title = "My Portfolio" } = Astro.props;
 			gap: 1rem;
 		}
 
+		header {
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			will-change: transform, opacity;
+		}
+
+		header.hidden {
+			transform: translateY(-100%);
+			opacity: 0;
+			pointer-events: none;
+		}
+
 		nav ul {
 			flex-direction: column;
 			align-items: center;
@@ -256,3 +287,33 @@ const { title = "My Portfolio" } = Astro.props;
 		}
 	}
 </style>
+
+<script>
+	let lastScrollTop = 0;
+	const header = document.querySelector('header');
+	const mobileBreakpoint = 768;
+
+	function handleScroll() {
+		if (window.innerWidth <= mobileBreakpoint) {
+			const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+			const windowHeight = window.innerHeight;
+			const documentHeight = document.documentElement.scrollHeight;
+			const isNearBottom = windowHeight + currentScroll >= documentHeight - 100;
+			
+			if (currentScroll > lastScrollTop || isNearBottom) {
+				// Scrolling down or near bottom - hide header
+				header?.classList.add('hidden');
+			} else if (currentScroll < lastScrollTop && !isNearBottom) {
+				// Scrolling up and not near bottom - show header
+				header?.classList.remove('hidden');
+			}
+			
+			lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+		} else {
+			header?.classList.remove('hidden');
+		}
+	}
+
+	window.addEventListener('scroll', handleScroll);
+	window.addEventListener('resize', handleScroll);
+</script>

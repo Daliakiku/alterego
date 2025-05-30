@@ -7,16 +7,11 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Welcome to My Portfolio">
 	<section class="hero">
-		<div class="slideshow">
-			<div class="slide"></div>
-			<div class="slide"></div>
-			<div class="slide"></div>
-		</div>
 		<div class="hero-content">
-			<h1>Hi, I'm <span class="highlight">Your Name</span></h1>
-			<p class="subtitle">Web Developer & Designer</p>
+			<h1>Hi, I'm <span class="highlight">Kiku</span></h1>
+			<p class="subtitle">Visual Artist, Animator, Photographer</p>
 			<p class="description">
-				I create beautiful, functional websites and applications with modern technologies.
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
 			</p>
 			<div class="cta-buttons">
 				<a href="/about" class="button secondary">Contact Me</a>
@@ -34,57 +29,21 @@ import Layout from '../layouts/Layout.astro';
 		text-align: center;
 		padding: 2rem;
 		position: relative;
-		overflow: hidden;
-	}
-
-	.slideshow {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 0;
-	}
-
-	.slide {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		transition: opacity 1s ease-in-out;
-	}
-
-	.slide:nth-child(1) {
-		background-image: url('/images/slide1.jpg');
-		opacity: 1;
-	}
-
-	.slide:nth-child(2) {
-		background-image: url('/images/slide2.jpg');
-	}
-
-	.slide:nth-child(3) {
-		background-image: url('/images/slide3.jpg');
+		background-color: var(--secondary-background);
 	}
 
 	.hero-content {
 		max-width: 800px;
 		position: relative;
 		z-index: 1;
-		background-color: rgba(255, 255, 255, 0.9);
 		padding: 2rem;
-		border-radius: 0.5rem;
 	}
 
 	h1 {
 		font-size: 3.5rem;
 		margin-bottom: 1rem;
 		line-height: 1.2;
+		color: var(--text-color);
 	}
 
 	.highlight {
@@ -99,7 +58,7 @@ import Layout from '../layouts/Layout.astro';
 
 	.description {
 		font-size: 1.2rem;
-		color: #4b5563;
+		color: var(--text-color);
 		margin-bottom: 2rem;
 	}
 
@@ -127,12 +86,12 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.button.secondary {
-		background-color: var(--secondary-background);
-		color: var(--text-color);
+		background-color: var(--primary-color);
+		color: white;
 	}
 
 	.button.secondary:hover {
-		background-color: #e5e7eb;
+		background-color: #1d4ed8;
 	}
 
 	@media (max-width: 768px) {
@@ -161,10 +120,25 @@ import Layout from '../layouts/Layout.astro';
 	const totalSlides = slides.length;
 
 	function nextSlide() {
+		// Pause current video
+		const currentVideo = slides[currentSlide].querySelector('video');
+		currentVideo?.pause();
+
+		// Hide current slide
 		slides[currentSlide].style.opacity = '0';
+		
+		// Move to next slide
 		currentSlide = (currentSlide + 1) % totalSlides;
+		
+		// Show and play next video
 		slides[currentSlide].style.opacity = '1';
+		const nextVideo = slides[currentSlide].querySelector('video');
+		nextVideo?.play();
 	}
+
+	// Initialize first video
+	const firstVideo = slides[0].querySelector('video');
+	firstVideo?.play();
 
 	// Change slide every 5 seconds
 	setInterval(nextSlide, 5000);
