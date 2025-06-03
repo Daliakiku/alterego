@@ -86,12 +86,15 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.button.secondary {
-		background-color: var(--primary-color);
-		color: white;
+		background-color: transparent;
+		color: var(--primary-color);
+		border: 2px solid var(--primary-color);
 	}
 
 	.button.secondary:hover {
-		background-color: #1d4ed8;
+		background-color: var(--primary-color);
+		color: var(--background-color);
+		transform: translateY(-2px);
 	}
 
 	@media (max-width: 768px) {

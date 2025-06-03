@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Sketchbook">
+<Layout title="Sketchbook Gallery">
 	<section class="page-header">
 		<h1>Sketchbook</h1>
 		<a href="/illustrations" class="back-link">← Back to Illustrations</a>
@@ -11,16 +11,97 @@ import Layout from '../../layouts/Layout.astro';
 	<section class="gallery">
 		<div class="gallery-grid">
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Sketch" />
+				<img src="/images/sketchbook/IMG_4296_2.jpg" alt="Sketchbook drawing" />
 			</div>
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Sketch" />
+				<img src="/images/sketchbook/IMG_4295.jpg" alt="Sketchbook drawing" />
 			</div>
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Sketch" />
+				<img src="/images/sketchbook/IMG_4294_2.jpg" alt="Sketchbook drawing" />
 			</div>
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Sketch" />
+				<img src="/images/sketchbook/IMG_3789_2.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3788_4.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3496.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3421_2.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3420_2.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3419.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3414.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3287.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_3285.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_2356.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_2355.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_2251.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_2248.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_2235.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_2074.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1536.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1496.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1449.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1448.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1447.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1446.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1423.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1422.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_1133.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_0443.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_0180_2.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_0178.jpg" alt="Sketchbook drawing" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/sketchbook/IMG_0175.jpg" alt="Sketchbook drawing" />
 			</div>
 		</div>
 	</section>
@@ -45,6 +126,12 @@ import Layout from '../../layouts/Layout.astro';
 		text-decoration: none;
 		display: inline-block;
 		margin-top: 1rem;
+		font-size: 1.1rem;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	.back-link:hover {
+		opacity: 0.8;
 	}
 
 	.gallery {
@@ -53,24 +140,26 @@ import Layout from '../../layouts/Layout.astro';
 
 	.gallery-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		gap: 2rem;
 	}
 
 	.gallery-item {
 		position: relative;
 		overflow: hidden;
-		height: 300px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		aspect-ratio: 1;
+		background-color: #000;
 	}
 
 	.gallery-item img {
-		max-width: 100%;
-		max-height: 100%;
-		width: auto;
-		height: auto;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.gallery-item:hover img {
+		transform: scale(1.05);
 	}
 
 	@media (max-width: 768px) {

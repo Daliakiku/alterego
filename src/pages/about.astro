@@ -12,10 +12,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="about-grid">
 			<div class="photo-section">
 				<div class="photo-container">
-					<div class="photo-placeholder">
-						<!-- Replace this with your photo -->
-						<p>Your Photo Here</p>
-					</div>
+					<img src="/images/me.JPG" alt="Dalia Thornburgh" class="profile-photo" />
 				</div>
 				<div class="quick-info">
 					<h3>Quick Info</h3>
@@ -28,14 +25,12 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<div class="bio-section">
-				<h2>My Story</h2>
+				<h2>Hello?</h2>
 				<p>
-					Welcome to my portfolio! I'm a passionate photographer and illustrator with a keen eye for detail
-					and a love for creative expression. My journey in the visual arts began [Your Story Here].
+					Hey there. I'm Dalia Kiku, a designer and illustrator based in Mexico City, currently studying computación creativa at the CENTRO university. I work with ink, code, paint, fabric, and almost anything that has to do with art.
 				</p>
 				<p>
-					I specialize in [Your Specialties] and love to [What You Love Doing]. My work is inspired by
-					[Your Inspirations] and I strive to [Your Goals].
+					I love anything horror, video games, and the weird. My ultimate goal is to be a tattooing, fashion designing, music making, photo taking, illustration creator... I want to do everything.
 				</p>
 			</div>
 		</div>
@@ -84,14 +79,11 @@ import Layout from '../layouts/Layout.astro';
 		overflow: hidden;
 	}
 
-	.photo-placeholder {
+	.profile-photo {
+		width: 100%;
 		height: 400px;
-		background-color: #e5e7eb;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: #6b7280;
-		font-size: 1.25rem;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	.quick-info {
@@ -136,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
 			grid-template-columns: 1fr;
 		}
 
-		.photo-placeholder {
+		.profile-photo {
 			height: 300px;
 		}
 

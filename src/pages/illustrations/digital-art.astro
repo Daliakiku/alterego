@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Digital Art">
+<Layout title="Digital Art Gallery">
 	<section class="page-header">
 		<h1>Digital Art</h1>
 		<a href="/illustrations" class="back-link">← Back to Illustrations</a>
@@ -11,16 +11,100 @@ import Layout from '../../layouts/Layout.astro';
 	<section class="gallery">
 		<div class="gallery-grid">
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Digital Art" />
+				<video controls autoplay loop muted>
+					<source src="/images/digital art/Untitled_Artwork.MP4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
 			</div>
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Digital Art" />
+				<img src="/images/digital art/IMG_5242.PNG" alt="Digital Art" />
 			</div>
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Digital Art" />
+				<img src="/images/digital art/IMG_5241.PNG" alt="Digital Art" />
 			</div>
 			<div class="gallery-item">
-				<img src="/images/slide1.jpg" alt="Digital Art" />
+				<img src="/images/digital art/IMG_5239.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_5238.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_4550.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/spaceflower.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/selfportrait.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/Memory_Is_Key_~.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/May_19_2022.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/July_23_2022.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_5627.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_5626.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_5625.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_4302.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_4257.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_4049.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3990.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3969.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3965.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3752.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3696.GIF" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3625.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_3419.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_2368.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_2365.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_1872.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/IMG_1823.PNG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/C759571F-087B-4299-9A88-971A0219CAB6.JPG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/155620AC-9A9B-40DE-9ECD-D71AD6F44EF5.JPG" alt="Digital Art" />
+			</div>
+			<div class="gallery-item">
+				<img src="/images/digital art/53A6D055-E156-44EA-A405-F9C6BAE565BE.JPG" alt="Digital Art" />
 			</div>
 		</div>
 	</section>
@@ -45,6 +129,12 @@ import Layout from '../../layouts/Layout.astro';
 		text-decoration: none;
 		display: inline-block;
 		margin-top: 1rem;
+		font-size: 1.1rem;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	.back-link:hover {
+		opacity: 0.8;
 	}
 
 	.gallery {
@@ -53,24 +143,37 @@ import Layout from '../../layouts/Layout.astro';
 
 	.gallery-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		gap: 2rem;
 	}
 
 	.gallery-item {
 		position: relative;
 		overflow: hidden;
-		height: 300px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		max-width: 600px;
+		margin: 0 auto;
 	}
 
 	.gallery-item img {
-		max-width: 100%;
-		max-height: 100%;
-		width: auto;
+		width: 100%;
 		height: auto;
+		object-fit: contain;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.gallery-item video {
+		width: 100%;
+		max-height: 600px;
+		object-fit: contain;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.gallery-item:hover img,
+	.gallery-item:hover video {
+		transform: scale(1.05);
 	}
 
 	@media (max-width: 768px) {
