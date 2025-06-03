@@ -5,7 +5,6 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="About Me">
 	<section class="about-header">
 		<h1>About Me</h1>
-		<p class="subtitle">Get to know me better</p>
 	</section>
 
 	<section class="about-content">
@@ -27,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="bio-section">
 				<h2>Hello?</h2>
 				<p>
-					Hey there. I'm Dalia Kiku, a designer and illustrator based in Mexico City, currently studying computación creativa at the CENTRO university. I work with ink, code, paint, fabric, and almost anything that has to do with art.
+					Hey there. I'm Dalia Kiku, a 19 year old designer and illustrator based in Mexico City, currently studying computación creativa at CENTRO university. I work with ink, code, paint, fabric, and almost anything that has to do with art.
 				</p>
 				<p>
 					I love anything horror, video games, and the weird. My ultimate goal is to be a tattooing, fashion designing, music making, photo taking, illustration creator... I want to do everything.
@@ -57,26 +56,32 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.about-content {
-		padding: 2rem 0;
+		padding: 2rem;
 	}
 
 	.about-grid {
 		display: grid;
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 1.2fr 1.8fr;
 		gap: 3rem;
 		max-width: 1200px;
 		margin: 0 auto;
+		position: relative;
 	}
 
 	.photo-section {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		margin: 0 -2rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.photo-container {
 		background: white;
 		overflow: hidden;
+		padding: 0;
+		width: calc(100% + 4rem);
 	}
 
 	.profile-photo {
@@ -109,6 +114,8 @@ import Layout from '../layouts/Layout.astro';
 	.bio-section {
 		background: white;
 		padding: 2rem;
+		position: relative;
+		z-index: 2;
 	}
 
 	.bio-section h2 {

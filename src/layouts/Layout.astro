@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
 		<div id="main-content" class="main-content">
 			<header class="animate-header">
 				<nav>
-					<div class="logo animate-logo">Portfolio</div>
+					<a href="/" class="logo animate-logo">KIKU</a>
 					<ul class="animate-nav nav-links">
 						<li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
 						<li><a href="/photography" class={currentPath.startsWith('/photography') ? 'active' : ''}>Photography</a></li>
@@ -83,17 +83,6 @@ const currentPath = Astro.url.pathname;
 		position: relative;
 		background-color: var(--background-color);
 		padding: 2rem;
-	}
-
-	main::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: linear-gradient(45deg, transparent 45%, rgba(0, 0, 0, 0.02) 50%, transparent 55%);
-		pointer-events: none;
 	}
 
 	section {
@@ -173,7 +162,10 @@ const currentPath = Astro.url.pathname;
 	footer {
 		background-color: var(--background-color);
 		padding: 2rem;
-		margin-top: auto;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		z-index: 10;
 	}
 
 	.footer-content {
