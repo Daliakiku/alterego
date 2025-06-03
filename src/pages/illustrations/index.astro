@@ -154,7 +154,7 @@ import Layout from '../../layouts/Layout.astro';
 		const slideshows = document.querySelectorAll('.slideshow');
 		
 		slideshows.forEach(slideshow => {
-			const slides = slideshow.querySelectorAll('.slide');
+			const slides = slideshow.querySelectorAll('.slide') as NodeListOf<HTMLImageElement>;
 			let currentSlide = 0;
 			
 			function nextSlide() {

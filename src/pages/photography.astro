@@ -10,16 +10,28 @@ import Layout from '../layouts/Layout.astro';
 	<section class="gallery">
 		<div class="gallery-grid">
 			<a href="/photography/places" class="gallery-item">
-				<div class="image-placeholder"></div>
+				<div class="slideshow">
+					<img src="/images/places/DSC_1481.png" alt="Places Photography" class="slide" />
+					<img src="/images/places/MercadoChairs.jpg" alt="Places Photography" class="slide" />
+					<img src="/images/places/tree.jpg" alt="Places Photography" class="slide" />
+				</div>
 				<h3>Places</h3>
 			</a>
 			<a href="/photography/people" class="gallery-item">
-				<div class="image-placeholder"></div>
+				<div class="slideshow">
+					<img src="/images/people/people-3.jpg" alt="People Photography" class="slide" />
+					<img src="/images/people/people-5.jpg" alt="People Photography" class="slide" />
+					<img src="/images/people/autoretratos-11.jpg" alt="People Photography" class="slide" />
+				</div>
 				<h3>People</h3>
 			</a>
-			<a href="/photography/projects" class="gallery-item">
-				<div class="image-placeholder"></div>
-				<h3>Projects</h3>
+			<a href="/photography/analog" class="gallery-item">
+				<div class="slideshow">
+					<img src="/images/analog/img21.jpg" alt="Analog Photography" class="slide rotated-left" />
+					<img src="/images/analog/img27.jpg" alt="Analog Photography" class="slide rotated" />
+					<img src="/images/analog/10003.JPG" alt="Analog Photography" class="slide" />
+				</div>
+				<h3>Analog</h3>
 			</a>
 		</div>
 	</section>
@@ -90,6 +102,71 @@ import Layout from '../layouts/Layout.astro';
 		width: 100%;
 		text-align: center;
 		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		z-index: 1;
+	}
+
+	.slideshow {
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		transition: opacity 1s ease-in-out, filter 0.3s ease-in-out;
+		filter: grayscale(100%);
+	}
+
+	.slide.rotated {
+		transform: rotate(90deg) scale(1.2);
+		transform-origin: center center;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(90deg) scale(1.2);
+	}
+
+	.slide.rotated-left {
+		transform: rotate(-90deg) scale(1.2);
+		transform-origin: center center;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(-90deg) scale(1.2);
+	}
+
+	.slide:first-child {
+		opacity: 1;
+	}
+
+	.gallery-item:hover .slide {
+		filter: grayscale(0%);
+	}
+
+	.gallery-item:hover .slide.rotated {
+		filter: grayscale(0%);
+		transform: rotate(90deg) scale(1.2);
+	}
+
+	.gallery-item:hover .slide.rotated-left {
+		filter: grayscale(0%);
+		transform: rotate(-90deg) scale(1.2);
 	}
 
 	@media (max-width: 768px) {
@@ -104,5 +181,45 @@ import Layout from '../layouts/Layout.astro';
 		.gallery-grid {
 			grid-template-columns: 1fr;
 		}
+
+		.slide.rotated {
+			transform: translate(-50%, -50%) rotate(90deg) scale(2.0);
+		}
+
+		.slide.rotated-left {
+			transform: translate(-50%, -50%) rotate(-90deg) scale(2.0);
+		}
+
+		.gallery-item:hover .slide.rotated {
+			transform: translate(-50%, -50%) rotate(90deg) scale(2.0);
+		}
+
+		.gallery-item:hover .slide.rotated-left {
+			transform: translate(-50%, -50%) rotate(-90deg) scale(2.0);
+		}
 	}
-</style> 
+</style>
+
+<script>
+	// Slideshow functionality
+	function initSlideshow() {
+		const slideshows = document.querySelectorAll('.slideshow');
+		
+		slideshows.forEach(slideshow => {
+			const slides = slideshow.querySelectorAll('.slide') as NodeListOf<HTMLImageElement>;
+			let currentSlide = 0;
+			
+			function nextSlide() {
+				slides[currentSlide].style.opacity = '0';
+				currentSlide = (currentSlide + 1) % slides.length;
+				slides[currentSlide].style.opacity = '1';
+			}
+			
+			// Start the slideshow
+			setInterval(nextSlide, 3000); // Change slide every 3 seconds
+		});
+	}
+
+	// Initialize slideshow when the page loads
+	document.addEventListener('DOMContentLoaded', initSlideshow);
+</script> 
